@@ -54,31 +54,32 @@ console.log(map.size) // 5
 # Map Iteration
 
 ```javascript
-const map = new Map();
-map.set('name', 'John');
-map.set('age', 30);
-map.set('isMarried', true);
-map.set('address', {city: 'New York', state: 'NY'});
-map.set('hobbies', ['reading', 'writing', 'coding']);
+const map = new Map()
+map.set('name', 'John')
+map.set('age', 30)
+map.set('isMarried', true)
+map.set('address', { city: 'New York', state: 'NY' })
+map.set('hobbies', ['reading', 'writing', 'coding'])
 
 // Iterate keys
 for (const key of map.keys()) {
-  console.log(key);
+  console.log(key)
 }
 
 // Iterate values
 for (const value of map.values()) {
-  console.log(value);
+  console.log(value)
 }
 
 // Iterate key-value pairs
 for (const [key, value] of map.entries()) {
-  console.log(key, value);
+  console.log(key, value)
 }
 
 // Iterate key-value pairs
 map.forEach((value, key) => {
-  console
+  console.log(key, value)
+})
 ```
 
 # Map vs Object

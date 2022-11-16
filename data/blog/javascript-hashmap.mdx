@@ -8,13 +8,13 @@ summary: Key-value pair variable in JavaScript
 
 **Why Hashmap?** Well, we all know that another programming language has something called **Hashtable**. It is a data structure that stores key-value pairs that are so great because of their O(1) constant time lookup. It is an advantageous data structure we can use to store data. In JavaScript, we don't have a built-in data structure like Hashtable. But we can use an object to store key-value pairs. It is called a Map in JavaScript.
 
-# What is a Map?
+## What is a Map?
 
 A Map is a collection of elements where each element is stored as a Key, Value pair. A Map's keys and values can be any value (both objects and primitive values). A Map object iterates its elements in insertion order — a for...of loop returns an array of [key, value] for each iteration.
 
 A Map holds key-value pairs where the keys can be any datatype. A Map has a property that represents the size of the Map. A Map remembers the original insertion order of the keys.
 
-# Map Methods & Property
+## Map Methods & Property
 
 | Method    | Description                                                        |
 | --------- | ------------------------------------------------------------------ |
@@ -33,7 +33,7 @@ A Map holds key-value pairs where the keys can be any datatype. A Map has a prop
 | -------- | ---------------------------------------------- |
 | size     | Returns the number of key/value pairs in a Map |
 
-# Map Example
+## Map Example
 
 ```javascript
 const map = new Map()
@@ -52,7 +52,7 @@ console.log(map.get('hobbies')) // ['reading', 'writing', 'coding']
 console.log(map.size) // 5
 ```
 
-# Map Iteration
+## Map Iteration
 
 ```javascript
 const map = new Map()
@@ -83,7 +83,7 @@ map.forEach((value, key) => {
 })
 ```
 
-# Map vs. Object
+## Map vs. Object
 
 | Map                                                                                                                        | Object                                                    |
 | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
@@ -94,11 +94,11 @@ map.forEach((value, key) => {
 | Map can use objects as keys.                                                                                               | Object can not use objects as keys.                       |
 | Map is faster than Object in general.                                                                                      | Object is generally slower than Map.                      |
 
-# Conclusion
+## Conclusion
 
 In this article, we have learned about Map in JavaScript. We have learned about the Map methods and properties. We have also known about the difference between Map and Object. I hope you have enjoyed this article. If you have any questions, please leave a comment below. Thank you for reading.
 
-# References
+## References
 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 

@@ -1,0 +1,261 @@
+---
+title: Big O Notation in JavaScript
+date: '2022-11-21'
+tags: [algorithms, big-o, data-structures, javascript]
+draft: false
+summary: A quick overview of Big O Notation in JavaScript
+---
+
+Big O Notation, collectively called Bachmann-Landau notation or asymptotic notation, is a way to describe the performance of an algorithm. It is used to describe the worst-case scenario of an algorithm. It is used to compare the performance of different algorithms. It describes the implementation of an algorithm in terms of the input size.
+
+Big O notation characterizes functions according to their growth rates: tasks with the same growth rate are considered to be of the same order. It is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. It is used to classify algorithms according to how their run time or space requirements grow as the input size grows. The letter O is used because the growth rate of a function is also called its order.
+
+# Iteration
+
+## For loop
+
+```js
+for (let i = 0; i < n; i++) {
+  console.log(i)
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n).
+
+## While loop
+
+```js
+let i = 0
+while (i < n) {
+  console.log(i)
+  i++
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n).
+
+## Do while loop
+
+```js
+let i = 0
+do {
+  console.log(i)
+  i++
+} while (i < n)
+```
+
+The above code will run n times. The time complexity of this code is O(n).
+
+# Recursion
+
+## Factorial
+
+```js
+function factorial(n) {
+  if (n === 0) {
+    return 1
+  }
+  return n * factorial(n - 1)
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n).
+
+## Fibonacci
+
+```js
+function fibonacci(n) {
+  if (n <= 1) {
+    return n
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2)
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n).
+
+# Searching
+
+## Linear search
+
+```js
+function linearSearch(arr, value) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      return i
+    }
+  }
+  return -1
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n).
+
+## Binary search
+
+```js
+function binarySearch(arr, value) {
+  let start = 0
+  let end = arr.length - 1
+  let middle = Math.floor((start + end) / 2)
+  while (arr[middle] !== value && start <= end) {
+    if (value < arr[middle]) {
+      end = middle - 1
+    } else {
+      start = middle + 1
+    }
+    middle = Math.floor((start + end) / 2)
+  }
+  if (arr[middle] === value) {
+    return middle
+  }
+  return -1
+}
+```
+
+The above code will run log(n) times. The time complexity of this code is O(log(n)).
+
+# Sorting
+
+## Bubble sort
+
+```js
+function bubbleSort(arr) {
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+      }
+    }
+  }
+  return arr
+}
+```
+
+The above code will run n^2 times. The time complexity of this code is O(n^2).
+
+## Selection sort
+
+```js
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let lowest = i
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[lowest]) {
+        lowest = j
+      }
+    }
+    if (i !== lowest) {
+      let temp = arr[i]
+      arr[i] = arr[lowest]
+      arr[lowest] = temp
+    }
+  }
+  return arr
+}
+```
+
+The above code will run n^2 times. The time complexity of this code is O(n^2).
+
+## Insertion sort
+
+```js
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let currentVal = arr[i]
+    for (var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+      arr[j + 1] = arr[j]
+    }
+    arr[j + 1] = currentVal
+  }
+  return arr
+}
+```
+
+The above code will run n^2 times. The time complexity of this code is O(n^2).
+
+## Merge sort
+
+```js
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr
+  let mid = Math.floor(arr.length / 2)
+  let left = mergeSort(arr.slice(0, mid))
+  let right = mergeSort(arr.slice(mid))
+  return merge(left, right)
+}
+
+function merge(left, right) {
+  let results = []
+  let i = 0
+  let j = 0
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      results.push(left[i])
+      i++
+    } else {
+      results.push(right[j])
+      j++
+    }
+  }
+  while (i < left.length) {
+    results.push(left[i])
+    i++
+  }
+  while (j < right.length) {
+    results.push(right[j])
+    j++
+  }
+  return results
+}
+```
+
+The above code will run n log(n) times. The time complexity of this code is O(n log(n)).
+
+## Quick sort
+
+```js
+function pivot(arr, start = 0, end = arr.length + 1) {
+  let pivot = arr[start]
+  let swapIdx = start
+  function swap(array, i, j) {
+    let temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+  for (let i = start + 1; i < arr.length; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++
+      swap(arr, swapIdx, i)
+    }
+  }
+  swap(arr, start, swapIdx)
+  return swapIdx
+}
+
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(arr, left, right)
+    quickSort(arr, left, pivotIndex - 1)
+    quickSort(arr, pivotIndex + 1, right)
+  }
+  return arr
+}
+```
+
+The above code will run n log(n) times. The time complexity of this code is O(n log(n)).
+
+# Tips for Big O
+
+- Arithmetic operations are constant
+- Variable assignment is constant
+- Accessing elements in an array (by index) or object (by key) is constant
+- In a loop, the complexity is the length of the loop times the complexity of whatever happens inside of the loop
+
+# Resources
+
+- [Big O Cheat Sheet](https://www.bigocheatsheet.com/)
+- [Big O Notation](https://www.interviewcake.com/article/javascript/big-o-notation-time-and-space-complexity)
+- [Big O Notation](https://www.freecodecamp.org/news/big-o-notation-time-and-space-complexity-explained-with-examples-1f6e26a13a6e/)

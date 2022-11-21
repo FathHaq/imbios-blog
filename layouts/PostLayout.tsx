@@ -14,7 +14,7 @@ import type { Blog, Authors } from 'contentlayer/generated'
 const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/master/data/blog/${slug}`
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `${siteMetadata.siteUrl}/blog/${slug}`
+    `${siteMetadata.siteUrl}/post/${slug}`
   )}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
@@ -38,7 +38,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
   return (
     <SectionContainer>
       <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${slug}`}
+        url={`${siteMetadata.siteUrl}/post/${slug}`}
         authorDetails={authorDetails}
         {...content}
       />
@@ -134,7 +134,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                          <Link href={`/post/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
@@ -144,7 +144,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                          <Link href={`/post/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
                     )}
@@ -153,7 +153,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </div>
               <div className="pt-4 xl:pt-8">
                 <Link
-                  href="/blog"
+                  href="/post"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   &larr; Back to the blog

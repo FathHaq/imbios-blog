@@ -20,7 +20,7 @@ for (let i = 0; i < n; i++) {
 }
 ```
 
-The above code will run n times. The time complexity of this code is O(n).
+The above code will run n times. The time complexity of this code is O(n) and the space complexity is O(1).
 
 ## While loop
 
@@ -32,7 +32,7 @@ while (i < n) {
 }
 ```
 
-The above code will run n times. The time complexity of this code is O(n).
+The above code will run n times. The time complexity of this code is O(n) and the space complexity is O(1).
 
 ## Do while loop
 
@@ -59,20 +59,18 @@ function factorial(n) {
 }
 ```
 
-The above code will run n times. The time complexity of this code is O(n).
+The above code will run n times. The time complexity of this code is O(n) and the space complexity is O(n).
 
 ## Fibonacci
 
 ```js
 function fibonacci(n) {
-  if (n <= 1) {
-    return n
-  }
+  if (n < 2) return n
   return fibonacci(n - 1) + fibonacci(n - 2)
 }
 ```
 
-The above code will run n times. The time complexity of this code is O(n).
+The above code will run n times. The time complexity of this code is O(2^n) and the space complexity is O(n). This things is called exponential time complexity. Thanks to (Bastian Le Gall)[https://www.showwcase.com/show/18560/big-o-notation-in-javascript], I'm very interested to create a post about this.
 
 # Searching
 
@@ -245,7 +243,206 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 }
 ```
 
-The above code will run n log(n) times. The time complexity of this code is O(n log(n)).
+The above code will run n log(n) times. The best case time complexity of quick sort is O(n log(n)) and the worst case time complexity of quick sort is O(n^2) with average case time complexity of O(n log(n)). The space complexity is O(n).
+
+# Common Data Structure Pperations
+
+<table style={{textAlign:"center"}}>
+
+    <tbody><tr>
+      <th>Data Structure</th>
+      <th colspan="8">Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="4">Average</th>
+      <th colspan="4">Worst</th>
+      <th>Worst</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Access</th>
+      <th>Search</th>
+      <th>Insertion</th>
+      <th>Deletion</th>
+      <th>Access</th>
+      <th>Search</th>
+      <th>Insertion</th>
+      <th>Deletion</th>
+      <th></th>
+    </tr>
+
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Array_data_structure">Array</a></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queue</a></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked List</a></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked List</a></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>Θ(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>O(1)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Skip_list">Skip List</a></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{backgroundColor:"orange"}}>O(n log(n))</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Hash_table">Hash Table</a></td>
+      <td><code style={{backgroundColor:"grey"}}>N/A</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"green"}}>Θ(1)</code></td>
+      <td><code style={{backgroundColor:"grey"}}>N/A</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree</a></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian Tree</a></td>
+      <td><code style={{backgroundColor:"grey"}}>N/A</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{backgroundColor:"grey"}}>N/A</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/B_tree">B-Tree</a></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black Tree</a></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://en.wikipedia.org/wiki/Splay_tree">Splay Tree</a></td>
+      <td><code style={{backgroundColor:"grey"}}>N/A</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{backgroundColor:"grey"}}>N/A</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree</a></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>O(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/K-d_tree">KD Tree</a></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "greenyellow"}}>Θ(log(n))</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+      <td><code style={{ backgroundColor: "yellow"}}>O(n)</code></td>
+    </tr>
+
+</tbody></table>
 
 # Tips for Big O
 

@@ -8,11 +8,11 @@ summary: useEffect has been used so much that it has become a crutch for many de
 
 In this article, I will show you how to use React to replace useEffect in most cases.
 
-I've been watching ["Goodbye, useEffect" by David Khoursid](https://www.youtube.com/watch?v=bGzanfKVFeU) and it's 🤯 blow my mind in a 😀 good way. I agree with him that useEffect has been used so much that makes our code so dirty and hard to maintain. I've been using useEffect for a long time and I'm guilty of using it in the wrong way. I'm sure React has features that will make my code cleaner and easier to maintain.
+I've been watching ["Goodbye, useEffect" by David Khoursid](https://www.youtube.com/watch?v=bGzanfKVFeU), and it's 🤯 blows my mind in a 😀 good way. I agree that useEffect has been used so much that it makes our code dirty and hard to maintain. I've been using useEffect for a long time, and I'm guilty of misusing it. I'm sure React has features that will make my code cleaner and easier to maintain.
 
 ## What is useEffect?
 
-useEffect is a hook that allows us to perform side effects in function components. It's a combination of componentDidMount, componentDidUpdate, and componentWillUnmount in a single API. It's a very powerful hook that allows us to do a lot of things. But it's also a very dangerous hook that can cause a lot of bugs.
+useEffect is a hook that allows us to perform side effects in function components. It combines componentDidMount, componentDidUpdate, and componentWillUnmount in a single API. It's a compelling hook that will enable us to do many things. But it's also a very dangerous hook that can cause a lot of bugs.
 
 ## Why useEffect is dangerous?
 
@@ -35,9 +35,9 @@ const Counter = () => {
 }
 ```
 
-It's a simple counter that increases every second. It uses useEffect to set an interval. It also uses useEffect to clear the interval when the component unmounts. This is a very common use case for useEffect. It's a very simple example, but it's also a very bad example.
+It's a simple counter that increases every second. It uses useEffect to set an interval. It also uses useEffect to clear the interval when the component unmounts. The code snippet above is a widespread use case for useEffect. It's a straightforward example, but it's also a terrible example.
 
-The problem with this example is that the interval is set every time the component re-renders. It means that if the component re-renders for any reason, the interval will be set again. The interval will be called twice per second. It's not a problem with this simple example, but it can be a big problem when the interval is more complex. It can also cause memory leaks.
+The problem with this example is that the interval is set every time the component re-renders. If the component re-renders for any reason, the interval will be set again. The interval will be called twice per second. It's not a problem with this simple example, but it can be a big problem when the interval is more complex. It can also cause memory leaks.
 
 **How to fix it?**
 
@@ -61,11 +61,11 @@ const Counter = () => {
 }
 ```
 
-This is a lot better than the previous example. It doesn't set the interval every time the component re-renders. But it's still not perfect. It's still a bit complicated. And it still uses useEffect, which is a very dangerous hook.
+The above code is a lot better than the previous example. It doesn't set the interval every time the component re-renders. But it still needs improvement. It's still a bit complicated. And it still uses useEffect, which is a very dangerous hook.
 
 ## useEffect is not for effects
 
-As we know about useEffect, it's a combination of componentDidMount, componentDidUpdate, and componentWillUnmount in a single API. Let's have some example about it:
+As we know about useEffect, it combines componentDidMount, componentDidUpdate, and componentWillUnmount in a single API. Let's give some examples of it:
 
 ```jsx
 useEffect(() => {
@@ -87,7 +87,7 @@ useEffect(() => {
 }, [])
 ```
 
-It's very easy to understand. useEffect is used to perform side effects when the component mounts, updates, and unmounts. But it's not only used to perform side effects. It's also used to perform side effects when the component re-renders. It's not a good idea to perform side effects when the component re-renders. It can cause a lot of bugs. It's better to use other hooks to perform side effects when the component re-renders.
+It's effortless to understand. useEffect is used to perform side effects when the component mounts, updates, and unmounts. But it's not only used to perform side effects. It's also used to perform side effects when the component re-renders. It's not a good idea to perform side effects when the component re-renders. It can cause a lot of bugs. It's better to use other hooks to perform side effects when the component re-renders.
 
 > useEffect is not a lifecycle hook.
 
@@ -184,11 +184,11 @@ useEffect(() => {
     doSomethingElse()
   }
 
-  // oops, forgot the cleanup
+  // oops, I forgot the cleanup
 }, [foo, bar, baz, quo])
 ```
 
-**Real world implementation**:
+**Real-world implementation**:
 
 ```jsx
 useEffect(() => {
@@ -212,13 +212,13 @@ useEffect(() => {
 }, [removingValue, hasValue, cssDisplayFlex])
 ```
 
-It's scary to write these code. Furthermore, to think of it will be normal in our codebase, it's kinda messed up. 😱🤮
+It's scary to write this code. Furthermore, it will be normal in our codebase and messed up. 😱🤮
 
 ## Where do effects go?
 
-React 18 runs effects twice on mount (in strict mode). Mount/effect (╯°□°)╯︵ ┻━┻ -> Unmount (simulated)/cleanup ┬─┬ /( º \_ º /) -> Remount/effect (╯°□°)╯︵ ┻━┻
+React 18 runs effects twice on the mount (in strict mode). Mount/effect (╯°□°)╯︵ ┻━┻ -> Unmount (simulated)/cleanup ┬─┬ /( º \_ º /) -> Remount/effect (╯°□°)╯︵ ┻━┻
 
-Should it be placed outside of the component? The default useEffect? Uh... awkward. Hmm... 🤔 We couldn't place it in render since no side-effects in render, because render is just like right-hand of math equation, it should be only the result of the calculation.
+Should it be placed outside of the component? The default useEffect? Uh... awkward. Hmm... 🤔 We couldn't put it in render since it should be no side-effects there because render is just like the right-hand of a math equation. It should be only the result of the calculation.
 
 ### What is useEffect for?
 
@@ -290,24 +290,24 @@ o-------------------------------------------------------------------------------
 </form>
 ```
 
-For this topic, there is a great information in Beta React.js Learn at Responding to Events. I recommend reading it. It's a great resource. Especially the ["Can event handlers have side effects?" part](https://beta.reactjs.org/learn/responding-to-events#can-event-handlers-have-side-effects).
+There is excellent information in Beta React.js. I recommend reading it. Especially the ["Can event handlers have side effects?" part](https://beta.reactjs.org/learn/responding-to-events#can-event-handlers-have-side-effects).
 
 > Absolutely! <u>Event handlers are the best place for side effects.</u>
 
-Antoher great resource I want to mention is [Where you _can cause_ side effects](beta.reactjs.org/learn/keeping-components-pure#where-you-can-cause-side-effects)
+Another great resource I want to mention is [Where you _can cause_ side effects](beta.reactjs.org/learn/keeping-components-pure#where-you-can-cause-side-effects)
 
 > In React, <u>side effects usually belong inside event handlers.</u>
 
 > If you've exhausted all other options and can't find the right event handler for your side effect, you can still attach it to your returned JSX with a <u>useEffect</u> call in your component. This tells React to execute it later, after rendering, when side effects are allowed. <u>**However, this approach should be your last resort.**</u>
 
-"Effects happen outside of rendering" - David Khoursid
+"Effects happen outside of rendering" - David Khoursid.
 
 ```js
 (state) => UI
 (state, event) => nextState // 🤔 Effects?
 ```
 
-UI is a function of state. As all of the current state rendered, it will produce the current UI. Likewise, when an event happens, it will produce a new state. And when the state changes, it will produce a new UI. This is the core of React.
+UI is a function of the state. As all the current states are rendered, it will produce the current UI. Likewise, when an event happens, it will create a new state. And when the state changes, it will build a new UI. This paradigm is the core of React.
 
 ### When do effects happen?
 
@@ -330,13 +330,13 @@ Which happen to be executed at the same time as **event handlers.**
 
 ## We Might Not Need an Effects
 
-Maybe we use useEffect because we don't know that there is already a built-in API from React that can solve this problem.
+We could use useEffect because we don't know that there is already a built-in API from React that can solve this problem.
 
-Here is a good resource to read about this topic: [You Might Not Need an Effects](https://beta.reactjs.org/learn/you-might-not-need-an-effect)
+Here is an excellent resource to read about this topic: [You Might Not Need an Effect](https://beta.reactjs.org/learn/you-might-not-need-an-effect)
 
 ### We don't need useEffect for **transforming data.**
 
-useEffect ➡️ useMemo (even we don't need useMemo in most cases)
+useEffect ➡️ useMemo (even though we don't need useMemo in most cases)
 
 ```jsx
 const Cart = () => {
@@ -351,7 +351,7 @@ const Cart = () => {
 }
 ```
 
-Read and think it again carefully 🧐.
+Read and think about it again carefully 🧐.
 
 ```jsx
 const Cart = () => {
@@ -364,9 +364,9 @@ const Cart = () => {
 }
 ```
 
-Instead of using `useEffect` to calculate the total, we can use `useMemo` to memoize the total. Even if the variable is not an expensive calculation, we don't need to use `useMemo` to memoize it. Because we're basically trading performance for memory.
+Instead of using `useEffect` to calculate the total, we can use `useMemo` to memoize the total. Even if the variable is not an expensive calculation, we don't need to use `useMemo` to memoize it because we're basically trading performance for memory.
 
-Basically whenever we seen `setState` in `useEffect`, it's a warning sign that we can make it simpler.
+Whenever we see `setState` in `useEffect`, it's a warning sign that we can simplify it.
 
 ### Effects with external stores? [useSyncExternalStore](https://reactjs.org/docs/hooks-reference.html#usesyncexternalstore)
 
@@ -567,7 +567,7 @@ const Store = () => {
 }
 ```
 
-🍷 SSR huh?
+🍷 SSR, huh?
 
 ```jsx
 if (typeof window !== 'undefined') {
@@ -590,7 +590,7 @@ const renderApp = () => {
 }
 ```
 
-The thing here is, we don't necesarily need to place everything inside component.
+We don't necessarily need to place everything inside a component.
 
 ### We don't need useEffect for **fetching data.**
 
@@ -752,11 +752,11 @@ const Items = () => {
 
 or... just use() 🤔
 
-use() is a new React function that accepts a promise conceptually similar to await. use handles the promise returned by a function in a way that is compatible with components, hooks, and Suspense. Learn more about use in the React RFC.
+use() is a new React function that accepts a promise conceptually similar to await. use() handles the promise returned by a function in a way that is compatible with components, hooks, and Suspense. Learn more about use() in the React RFC.
 
 ```jsx
 function Note({ id }) {
-  // This fetches a note asynchronously, but to the component author it looks
+  // This fetches a note asynchronously, but to the component author, it looks
   // like a synchronous operation.
   const note = use(fetchNote(id))
   return (
@@ -782,7 +782,7 @@ function Note({ id }) {
 
 ## Conclusion
 
-From fetching data to fighting with imperative APIs, side effects are one of the biggest sources of frustration in web app development. And let's be honest, putting everything in useEffect hooks doesn't help much. Thankfully, there is a science (well, math) to side effects, formalized in state machines and statecharts, that can help us visually model and understand how to declaratively orchestrate effects, no matter how complex they get.
+From fetching data to fighting with imperative APIs, side effects are one of the most significant sources of frustration in web app development. And let's be honest, putting everything in useEffect hooks only helps a little. Thankfully, there is a science (well, math) to side effects, formalized in state machines and statecharts, that can help us visually model and understand how to orchestrate effects, no matter how complex they get declaratively.
 
 ## Resources
 

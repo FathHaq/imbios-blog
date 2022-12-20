@@ -10,8 +10,6 @@ In this article, I will show you how to use React to replace useEffect in most c
 
 I've been watching ["Goodbye, useEffect" by David Khoursid](https://www.youtube.com/watch?v=bGzanfKVFeU) and it's 🤯 blow my mind in a 😀 good way. I agree with him that useEffect has been used so much that makes our code so dirty and hard to maintain. I've been using useEffect for a long time and I'm guilty of using it in the wrong way. I'm sure React has features that will make my code cleaner and easier to maintain.
 
-{/* <blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you&#39;re struggling with `useEffect`, don&#39;t worry.<br><br>Even senior React devs struggle with it.<br><br>Yes, that large dependency array and complicated if-statement you have in there is... typical.<br><br>It&#39;s just an awkward hook, okay?</p>&mdash; David K. 🎹 (@DavidKPiano) <a href="https://twitter.com/DavidKPiano/status/1450814619426115588?ref_src=twsrc%5Etfw">October 20, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> */}
-
 ## What is useEffect?
 
 useEffect is a hook that allows us to perform side effects in function components. It's a combination of componentDidMount, componentDidUpdate, and componentWillUnmount in a single API. It's a very powerful hook that allows us to do a lot of things. But it's also a very dangerous hook that can cause a lot of bugs.
@@ -22,22 +20,20 @@ Let's take a look at the following example:
 
 ```jsx
 import React, { useEffect } from 'react'
-```
 
 const Counter = () => {
-const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
-useEffect(() => {
-const interval = setInterval(() => {
-setCount((c) => c + 1);
-}, 1000);
-return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((c) => c + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
-return <div>{count}</div>;
-};
-
-````
+  return <div>{count}</div>
+}
+```
 
 It's a simple counter that increases every second. It uses useEffect to set an interval. It also uses useEffect to clear the interval when the component unmounts. This is a very common use case for useEffect. It's a very simple example, but it's also a very bad example.
 
@@ -48,22 +44,22 @@ The problem with this example is that the interval is set every time the compone
 There are many ways to fix this problem. One way is to use useRef to store the interval.
 
 ```jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react'
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
-  const intervalRef = useRef();
+  const [count, setCount] = useState(0)
+  const intervalRef = useRef()
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setCount((c) => c + 1);
-    }, 1000);
-    return () => clearInterval(intervalRef.current);
-  }, []);
+      setCount((c) => c + 1)
+    }, 1000)
+    return () => clearInterval(intervalRef.current)
+  }, [])
 
-  return <div>{count}</div>;
-};
-````
+  return <div>{count}</div>
+}
+```
 
 This is a lot better than the previous example. It doesn't set the interval every time the component re-renders. But it's still not perfect. It's still a bit complicated. And it still uses useEffect, which is a very dangerous hook.
 

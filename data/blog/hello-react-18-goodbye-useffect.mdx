@@ -91,12 +91,13 @@ It's effortless to understand. useEffect is used to perform side effects when th
 
 > useEffect is not a lifecycle hook.
 
-<blockquote class="twitter-tweet">
+<blockquote className="twitter-tweet">
   <p lang="en" dir="ltr">
     I will never comprehend why the *default* behavior of useEffect is an infinite loop
   </p>
   &mdash; Tomasz Łakomy 🇺🇦 (@tlakomy) <a href="https://twitter.com/tlakomy/status/1501574622839463936?ref_src=twsrc%5Etfw">March 9, 2022</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
 
 ```jsx
 import React, { useState, useEffect } from 'react'
@@ -121,13 +122,10 @@ const Example = () => {
 ```
 
 <video
-  playsinline=""
-  data-autoplay=""
-  loop="loop"
+  playsInline
+  autoPlay
+  loop
   poster="https://media.slid.es/videos/174419/okrq2BIZ/cleanshot_2022-04-30_at_11_thumb_00001.jpg"
-  data-paused-by-reveal=""
-  data-lazy-loaded=""
-  controlslist="nodownload"
   src="https://media.slid.es/videos/174419/okrq2BIZ/cleanshot_2022-04-30_at_11.mp4"
 />
 
@@ -234,14 +232,15 @@ useEffect(() => {
 }, [input])
 ```
 
-<blockquote class="twitter-tweet">
+<blockquote className="twitter-tweet">
   <p lang="en" dir="ltr">
     one way to think about it is that useEffect is a way to synchronize React with some external
     system (network, subscription, DOM). if you don't have any external system and just try to
     manage your data flow with useEffect, you're gonna have all these problems.
   </p>
   &mdash; дэн (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/1501737272999301121?ref_src=twsrc%5Etfw">March 10, 2022</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
 
 ```jsx
 useEffect(() => {

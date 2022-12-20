@@ -1,8 +1,8 @@
 ---
 title: Hello React, Goodbye useEffect (I Hope)
-date: '2022-12-19'
+date: '2022-12-20'
 tags: ['frontend', 'javascript', 'web development', 'react']
-draft: true
+draft: false
 summary: useEffect has been used so much that it has become a crutch for many developers.
 ---
 
@@ -474,7 +474,7 @@ const handleToggle = () => {
 }
 ```
 
-✅ Best way:
+✅ Best way is to create a custom hook:
 
 ```jsx
 const useToggle({ onOpen, onClose }) => {
@@ -508,6 +508,93 @@ const ChildProduct = ({ onOpen, onClose }) => {
   )
 }
 ```
+
+### We don't need useEft for **initializing global singletons.**
+
+useEffect ➡️ justCallIt
+
+❌ Wrong way:
+
+```jsx
+const Store = () => {
+  useEffect(() => {
+    storeApi.authenticate() // 👈 This will run twice!
+  }, [])
+
+  // ...
+}
+```
+
+🔨 Let's fix it:
+
+```jsx
+const Store = () => {
+  const didAuthenticateRef = useRef()
+
+  useEffect(() => {
+    if (didAuthenticateRef.current) return
+
+    storeApi.authenticate()
+
+    didAuthenticateRef.current = true
+  }, [])
+
+  // ...
+}
+```
+
+➿ Another way:
+
+```jsx
+let didAuthenticate = false
+
+const Store = () => {
+  useEffect(() => {
+    if (didAuthenticate) return
+
+    storeApi.authenticate()
+
+    didAuthenticate = true
+  }, [])
+
+  // ...
+}
+```
+
+🤔 How if:
+
+```jsx
+storeApi.authenticate()
+
+const Store = () => {
+  // ...
+}
+```
+
+🍷 SSR huh?
+
+```jsx
+if (typeof window !== 'undefined') {
+  storeApi.authenticate()
+}
+const Store = () => {
+  // ...
+}
+```
+
+🧪 Testing?
+
+```jsx
+const renderApp = () => {
+  if (typeof window !== 'undefined') {
+    storeApi.authenticate()
+  }
+
+  appRoot.render(<Store />)
+}
+```
+
+The thing here is, we don't necesarily need to place everything inside component.
 
 ### We don't need useEffect for **fetching data.**
 
@@ -669,7 +756,7 @@ const Items = () => {
 
 or... just use() 🤔
 
-use is a new React function that accepts a promise conceptually similar to await. use handles the promise returned by a function in a way that is compatible with components, hooks, and Suspense. Learn more about use in the React RFC.
+use() is a new React function that accepts a promise conceptually similar to await. use handles the promise returned by a function in a way that is compatible with components, hooks, and Suspense. Learn more about use in the React RFC.
 
 ```jsx
 function Note({ id }) {
@@ -684,3 +771,29 @@ function Note({ id }) {
   )
 }
 ```
+
+## Fetching in useEffect problems
+
+> 🏃‍♂️ Race conditions
+>
+> 🔙 No instant back button
+>
+> 🔍 No SSR or initial HTML content
+>
+> 🌊 Chasing waterfall
+>
+> - Reddit, Dan Abramov
+
+## Conclusion
+
+From fetching data to fighting with imperative APIs, side effects are one of the biggest sources of frustration in web app development. And let's be honest, putting everything in useEffect hooks doesn't help much. Thankfully, there is a science (well, math) to side effects, formalized in state machines and statecharts, that can help us visually model and understand how to declaratively orchestrate effects, no matter how complex they get.
+
+## Resources
+
+- [Remix](https://remix.run/)
+- [Next.js](https://nextjs.org/)
+- [React Query](https://react-query.tanstack.com/)
+- [use](https://github.com/acdlite/rfcs/blob/first-class-promises/text/0000-first-class-support-for-promises.md#usepromise)
+- [SWR](https://swr.vercel.app/)
+- [Goodbye, useEffect - David Khourshid](https://www.youtube.com/watch?v=bGzanfKVFeU)
+- [React 18: The One with Suspense for Data Fetching](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html)

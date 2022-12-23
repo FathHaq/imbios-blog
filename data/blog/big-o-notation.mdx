@@ -46,6 +46,20 @@ do {
 
 The above code will run n times. The time complexity of this code is O(n).
 
+## Fibonacci (Iterative)
+
+```js
+function fibonacci(n) {
+  let arr = [0, 1]
+  for (let i = 2; i <= n; i++) {
+    arr.push(arr[i - 2] + arr[i - 1])
+  }
+  return arr[n]
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n) and the space complexity is O(n). This is the **second best** fibonacci in terms of performance benchmark. The **best** one is using behold binet's formula, and even better when we precalculate the formula first.
+
 # Recursion
 
 ## Factorial
@@ -61,16 +75,32 @@ function factorial(n) {
 
 The above code will run n times. The time complexity of this code is O(n) and the space complexity is O(n).
 
-## Fibonacci
+## Fibonacci (Recursive)
 
 ```js
 function fibonacci(n) {
   if (n < 2) return n
+
   return fibonacci(n - 1) + fibonacci(n - 2)
 }
 ```
 
-The above code will run n times. The time complexity of this code is O(2^n) and the space complexity is O(n). This things is called exponential time complexity. Thanks to (Bastian Le Gall)[https://www.showwcase.com/show/18560/big-o-notation-in-javascript], I'm very interested to create a post about this.
+The above code will run n times. The time complexity of this code is O(2^n) and the space complexity is O(n). This things is called exponential time complexity. This is the **worst** fibonacci in terms of performance benchmark.
+
+## Fibonacci (Recursive with Memoization)
+
+```js
+function fibonacci(n, cache = []) {
+  if (n === 0) return 0
+  if (n === 1) return 1
+  if (cache[n]) return cache[n]
+
+  cache[n] = fibonacci(n - 2, cache) + fibonacci(n - 1, cache)
+  return cache[n]
+}
+```
+
+The above code will run n times. The time complexity of this code is O(n) and the space complexity is O(n). This is the **second worst** fibonacci in terms of performance benchmark, but a bunch a lot better than without memoization.
 
 # Searching
 

@@ -14,12 +14,12 @@ tags:
     'tensorflowjs',
   ]
 draft: false
-summary: A web app that allows users to create and manage their own warehouse of items.
+summary: A web app that allows users to create and manage their warehouse of items.
 ---
 
 ## What I built
 
-Cardus is a web app that allows users to create and manage their own warehouse of items. Users can add items to their warehouse, and easily identify what box is storing what item. Users can also share their warehouse or box with other users, allowing them to collaborate together.
+Cardus is a web app that allows users to create and manage their warehouse of items. Users can add items to their warehouse and quickly identify what box is storing what thing. Users can also share their warehouse or container with other users, allowing them to collaborate.
 
 ### App Link
 
@@ -52,9 +52,9 @@ Play Store: TBD
 
 ### Description
 
-Cardus App is a web app project to challange the boundry of web development for mobile user. The app is built with Next.js, a React framework, and deployed on Vercel. The app is also a PWA, which means it can be installed on mobile devices. The app also uses Trusted Web Activity, which allows the app to be installed on Android devices. The app also uses Google Cloud Platform to store images, and to run TensorFlow.js models to auto detect objects in item images.
+Cardus App is a web app project to challenge the boundary of web development for a mobile user. The app is built with Next.js, a React framework, and deployed on Vercel. The app is also a PWA, which We can install on mobile devices. The app also uses Trusted Web Activity, which allows the app to be installed on Android devices. The app also uses the Google Cloud Platform to store images and to run TensorFlow.js models to auto-detect objects in item images.
 
-I want the app to be seamlessly like native app, there are onboarding screen, beautiful transition, and smooth animations. The app also has a dark mode, which is a must for any modern app.
+I want the app to be seamless, like a native app. There are onboarding screens, beautiful transitions, and smooth animations. The app also has a dark mode, a must for any modern app.
 
 ### Link to Source Code
 
@@ -72,13 +72,13 @@ I want the app to be seamlessly like native app, there are onboarding screen, be
 - Hard to know where is the storage box
 - Hard to know what items are in which storage
 
-It's challenging to manage personal warehouse/storage
+It's challenging to manage personal warehouse/storage.
 
 ### 💡 Solution
 
 - Create a web app that allows users to create and manage their own warehouse of items
-- Users can add items to their warehouse, and easily identify what box is storing what item
-- Users can also share their warehouse or box with other users, allowing them to collaborate together
+- Users can add items to their warehouse and quickly identify what box is storing what item
+- Users can also share their warehouse or box with other users, allowing them to collaborate
 
 ### How I built it
 
@@ -94,9 +94,9 @@ It's challenging to manage personal warehouse/storage
 
 #### 📖 The Process
 
-We started by creating a Next.js app, and then we created a MongoDB Atlas cluster. We wanted to easily communicate with MongoDB, so we also using ORM with Prisma. Mobile web app is our focus here, so we don't care about the desktop at first. We make it a PWA, a bottom navigation bar, top bar, and a dark mode. We also planning to make it a Trusted Web Activity, so we can install it on Android devices.
+We started by creating a Next.js app, and then we made a MongoDB Atlas cluster. We wanted to communicate easily with MongoDB, so we used ORM with Prisma. Our focus is a mobile web app, so we only care about the desktop after a while. We make it a PWA, a bottom navigation bar, a top bar, and a dark mode. We are also planning to make it a Trusted Web Activity so that we can install it on Android devices.
 
-There are a lot of problem we're facing along the way. Using Google Cloud Storage API with serverless function is not easy, just by using this, we already facing a bunch of obstacles. Some can be solved by reading a forum and some just need a workaround to deal with. User love something smart, so we also want to make the app smart. We want to make the app able to detect the object in the image, so we use TensorFlow.js to do that. We also want to make the app able to scan the QR code, so we use ZXing to do that.
+There are a lot of problems we're facing along the way. Using Google Cloud Storage API with a serverless function takes work. Just by using this, we are already facing a bunch of obstacles. Some can be solved by reading a forum; some need a workaround. Users love something clever, so we also want to make the app intelligent. We want to make the app able to detect the object in the image, so we use TensorFlow.js to do that. We also want to make the app able to scan the QR code, so we use ZXing to do that.
 
 #### 📝 What I learned
 

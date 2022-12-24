@@ -76,13 +76,13 @@ It's challenging to manage personal warehouse/storage.
 
 ### 💡 Solution
 
-- Create a web app that allows users to create and manage their own warehouse of items
+- Create a web app that allows users to create and manage their warehouse of items
 - Users can add items to their warehouse and quickly identify what box is storing what item
 - Users can also share their warehouse or box with other users, allowing them to collaborate
 
-### How I built it
+## How I built it
 
-#### 📚 Tech Stack
+### 📚 Tech Stack
 
 - Next.js
 - React
@@ -92,13 +92,13 @@ It's challenging to manage personal warehouse/storage.
 - PWA
 - Trusted Web Activity
 
-#### 📖 The Process
+### 📖 The Process
 
 We started by creating a Next.js app, and then we made a MongoDB Atlas cluster. We wanted to communicate easily with MongoDB, so we used ORM with Prisma. Our focus is a mobile web app, so we only care about the desktop after a while. We make it a PWA, a bottom navigation bar, a top bar, and a dark mode. We are also planning to make it a Trusted Web Activity so that we can install it on Android devices.
 
 There are a lot of problems we're facing along the way. Using Google Cloud Storage API with a serverless function takes work. Just by using this, we are already facing a bunch of obstacles. Some can be solved by reading a forum; some need a workaround. Users love something clever, so we also want to make the app intelligent. We want to make the app able to detect the object in the image, so we use TensorFlow.js to do that. We also want to make the app able to scan the QR code, so we use ZXing to do that.
 
-#### 📝 What I learned
+### 📝 What I learned
 
 - How to use Next.js to build a web app
 - How to use MongoDB Atlas to store data
@@ -107,7 +107,7 @@ There are a lot of problems we're facing along the way. Using Google Cloud Stora
 - How to use PWA to make the app installable
 - How to use Trusted Web Activity to make the app installable on Android devices
 
-### Additional Resources/Info
+## Additional Resources/Info
 
 - [Next.js](https://nextjs.org/)
 - [React](https://reactjs.org/)
